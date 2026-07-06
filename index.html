@@ -2,466 +2,520 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Penang Travel Companion</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penang Heritage & Food Itinerary</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .card-carousel {
-            scroll-behavior: smooth;
-        }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-slate-900 min-h-screen flex items-center justify-center antialiased sm:py-8">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased pb-12">
 
-    <div class="relative w-full max-w-[480px] h-[100dvh] sm:h-[840px] bg-slate-50 flex flex-col overflow-hidden sm:rounded-3xl sm:shadow-[0_24px_60px_rgba(0,0,0,0.5)] border border-slate-100">
-        
-        <header class="bg-white border-b border-slate-100 px-5 py-4 flex items-center justify-between z-30 flex-shrink-0">
-            <div>
-                <span class="text-[11px] font-bold text-emerald-600 uppercase tracking-widest block mb-0.5">Penang Itinerary</span>
-                <h1 id="view-title" class="text-xl font-800 text-slate-800 tracking-tight transition-all duration-300">Day 1: Arrival</h1>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 border border-emerald-100 shadow-sm">
-                <i data-lucide="compass" class="w-5 h-5 animate-spin-slow"></i>
-            </div>
-        </header>
-
-        <main class="flex-1 relative overflow-hidden">
-            
-            <section id="tab-pane-0" class="tab-pane absolute inset-0 flex flex-col justify-between opacity-100 z-10 transition-all duration-300">
-                <div class="card-carousel flex overflow-x-auto snap-x snap-mandatory hide-scrollbar h-full items-center py-4" id="carousel-0">
-                    </div>
-            </section>
-
-            <section id="tab-pane-1" class="tab-pane absolute inset-0 flex flex-col justify-between opacity-0 z-0 pointer-events-none transition-all duration-300">
-                <div class="card-carousel flex overflow-x-auto snap-x snap-mandatory hide-scrollbar h-full items-center py-4" id="carousel-1">
-                    </div>
-            </section>
-
-            <section id="tab-pane-2" class="tab-pane absolute inset-0 flex flex-col justify-between opacity-0 z-0 pointer-events-none transition-all duration-300">
-                <div class="card-carousel flex overflow-x-auto snap-x snap-mandatory hide-scrollbar h-full items-center py-4" id="carousel-2">
-                    </div>
-            </section>
-
-            <section id="tab-pane-3" class="tab-pane absolute inset-0 flex flex-col justify-between opacity-0 z-0 pointer-events-none transition-all duration-300">
-                <div class="card-carousel flex overflow-x-auto snap-x snap-mandatory hide-scrollbar h-full items-center py-4" id="carousel-3">
-                    </div>
-            </section>
-
-            <section id="tab-pane-4" class="tab-pane absolute inset-0 overflow-y-auto bg-slate-50 hide-scrollbar opacity-0 z-0 pointer-events-none transition-all duration-300">
-                <div class="sticky top-0 bg-slate-50/90 backdrop-blur-md py-3 px-4 flex gap-2 overflow-x-auto hide-scrollbar z-20 border-b border-slate-200/50">
-                    <button onclick="filterExtras('all')" class="extra-filter-btn px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap bg-emerald-600 text-white shadow-sm transition-all">All</button>
-                    <button onclick="filterExtras('Non-Halal Food')" class="extra-filter-btn px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-600 shadow-sm transition-all">🐷 Non-Halal</button>
-                    <button onclick="filterExtras('Halal Food')" class="extra-filter-btn px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-600 shadow-sm transition-all">🌙 Halal</button>
-                    <button onclick="filterExtras('Mixed Courts')" class="extra-filter-btn px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-600 shadow-sm transition-all">🍲 Mixed</button>
-                    <button onclick="filterExtras('Points of Interest')" class="extra-filter-btn px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-600 shadow-sm transition-all">📍 POIs</button>
-                    <button onclick="filterExtras('Nightlife')" class="extra-filter-btn px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-600 shadow-sm transition-all">🥂 Nightlife</button>
+    <header class="sticky top-0 bg-white/90 backdrop-blur-md border-b border-slate-100 z-50 px-4 py-3 shadow-xs">
+        <div class="max-w-md mx-auto flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-slate-900">Penang Getaway 🇲🇾</h1>
+                    <p class="text-xs text-slate-500 font-medium">Sat, 11 July – Tue, 14 July</p>
                 </div>
-                <div id="extras-list-container" class="p-4 space-y-3 pb-24">
-                    </div>
-            </section>
+                <div class="bg-amber-50 border border-amber-200 rounded-full px-3 py-1 text-center">
+                    <span class="text-xs font-bold text-amber-700 block">4 Days</span>
+                </div>
+            </div>
 
-        </main>
+            <div class="flex bg-slate-100 rounded-xl p-1 gap-1 overflow-x-auto scrollbar-none">
+                <button onclick="switchTab(0)" id="tab-btn-0" class="flex-1 min-w-[72px] text-center py-2 text-xs font-bold rounded-lg transition-all duration-200 bg-white text-indigo-600 shadow-xs">
+                    Day 1
+                </button>
+                <button onclick="switchTab(1)" id="tab-btn-1" class="flex-1 min-w-[72px] text-center py-2 text-xs font-bold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900">
+                    Day 2
+                </button>
+                <button onclick="switchTab(2)" id="tab-btn-2" class="flex-1 min-w-[72px] text-center py-2 text-xs font-bold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900">
+                    Day 3
+                </button>
+                <button onclick="switchTab(3)" id="tab-btn-3" class="flex-1 min-w-[72px] text-center py-2 text-xs font-bold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900">
+                    Day 4
+                </button>
+            </div>
+        </div>
+    </header>
 
-        <nav class="bg-white border-t border-slate-200/80 px-2 py-2 flex items-center justify-between z-40 relative shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
-            <button onclick="switchTab(0)" class="nav-tab-btn flex-1 flex flex-col items-center justify-center py-2 text-emerald-600 transition-all duration-200">
-                <i data-lucide="calendar-days" class="w-5 h-5 mb-1 stroke-[2.5]"></i>
-                <span class="text-[10px] font-bold tracking-tight">Day 1</span>
-            </button>
-            <button onclick="switchTab(1)" class="nav-tab-btn flex-1 flex flex-col items-center justify-center py-2 text-slate-400 transition-all duration-200">
-                <i data-lucide="map" class="w-5 h-5 mb-1 stroke-[2]"></i>
-                <span class="text-[10px] font-medium tracking-tight">Day 2</span>
-            </button>
-            <button onclick="switchTab(2)" class="nav-tab-btn flex-1 flex flex-col items-center justify-center py-2 text-slate-400 transition-all duration-200">
-                <i data-lucide="milestone" class="w-5 h-5 mb-1 stroke-[2]"></i>
-                <span class="text-[10px] font-medium tracking-tight">Day 3</span>
-            </button>
-            <button onclick="switchTab(3)" class="nav-tab-btn flex-1 flex flex-col items-center justify-center py-2 text-slate-400 transition-all duration-200">
-                <i data-lucide="plane-takeoff" class="w-5 h-5 mb-1 stroke-[2]"></i>
-                <span class="text-[10px] font-medium tracking-tight">Day 4</span>
-            </button>
-            <button onclick="switchTab(4)" class="nav-tab-btn flex-1 flex flex-col items-center justify-center py-2 text-slate-400 transition-all duration-200">
-                <i data-lucide="sparkles" class="w-5 h-5 mb-1 stroke-[2]"></i>
-                <span class="text-[10px] font-medium tracking-tight">Extras</span>
-            </button>
-        </nav>
-    </div>
+    <main class="max-w-md mx-auto px-4 mt-4">
+        
+        <section id="tab-pane-0" class="tab-pane space-y-6">
+            <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 flex justify-between items-center shadow-xs">
+                <div>
+                    <h2 class="text-sm font-bold text-indigo-950">Day 1: Saturday, 11 July</h2>
+                    <p class="text-xs text-indigo-700 font-medium">Arrival, Heritage & Live Music</p>
+                </div>
+                <span class="text-xs font-extrabold bg-indigo-600 text-white px-2.5 py-1 rounded-full">~RM 60/pax</span>
+            </div>
+            
+            <div class="border-l-2 border-slate-200 ml-3.5 space-y-8" id="timeline-day-1">
+                </div>
+        </section>
+
+        <section id="tab-pane-1" class="tab-pane space-y-6 hidden">
+            <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 flex justify-between items-center shadow-xs">
+                <div>
+                    <h2 class="text-sm font-bold text-emerald-950">Day 2: Sunday, 12 July</h2>
+                    <p class="text-xs text-emerald-700 font-medium">Sunday Mass, Flea Market & Coastline</p>
+                </div>
+                <span class="text-xs font-extrabold bg-emerald-600 text-white px-2.5 py-1 rounded-full">~RM 76/pax</span>
+            </div>
+            
+            <div class="border-l-2 border-slate-200 ml-3.5 space-y-8" id="timeline-day-2">
+                </div>
+        </section>
+
+        <section id="tab-pane-2" class="tab-pane space-y-6 hidden">
+            <div class="bg-amber-50 border border-amber-100 rounded-2xl p-4 flex justify-between items-center shadow-xs">
+                <div>
+                    <h2 class="text-sm font-bold text-amber-950">Day 3: Monday, 13 July</h2>
+                    <p class="text-xs text-amber-700 font-medium">The Highlands & Monday Night Market</p>
+                </div>
+                <span class="text-xs font-extrabold bg-amber-600 text-white px-2.5 py-1 rounded-full">~RM 67/pax</span>
+            </div>
+            
+            <div class="border-l-2 border-slate-200 ml-3.5 space-y-8" id="timeline-day-3">
+                </div>
+        </section>
+
+        <section id="tab-pane-3" class="tab-pane space-y-6 hidden">
+            <div class="bg-rose-50 border border-rose-100 rounded-2xl p-4 flex justify-between items-center shadow-xs">
+                <div>
+                    <h2 class="text-sm font-bold text-rose-950">Day 4: Tuesday, 14 July</h2>
+                    <p class="text-xs text-rose-700 font-medium">Souvenirs & Departure Logistics</p>
+                </div>
+                <span class="text-xs font-extrabold bg-rose-600 text-white px-2.5 py-1 rounded-full">~RM 36/pax</span>
+            </div>
+            
+            <div class="border-l-2 border-slate-200 ml-3.5 space-y-8" id="timeline-day-4">
+                </div>
+        </section>
+
+    </main>
 
     <script>
-        // Data Structures Architecture
-        const appState = {
-            activeTab: 0,
-            carouselIndices: [0, 0, 0, 0]
-        };
+        // Tab switching routine
+        function switchTab(tabIndex) {
+            const panes = document.querySelectorAll('.tab-pane');
+            const buttons = document.querySelectorAll('[id^="tab-btn-"]');
+            
+            panes.forEach((pane, idx) => {
+                if (idx === tabIndex) {
+                    pane.classList.remove('hidden');
+                } else {
+                    pane.classList.add('hidden');
+                }
+            });
 
-        const viewTitles = [
-            "Day 1: Saturday, 11 July",
-            "Day 2: Sunday, 12 July",
-            "Day 3: Monday, 13 July",
-            "Day 4: Tuesday, 14 July",
-            "Extras & Saved Places"
-        ];
+            buttons.forEach((btn, idx) => {
+                if (idx === tabIndex) {
+                    btn.className = "flex-1 min-w-[72px] text-center py-2 text-xs font-bold rounded-lg transition-all duration-200 bg-white text-indigo-600 shadow-xs";
+                } else {
+                    btn.className = "flex-1 min-w-[72px] text-center py-2 text-xs font-bold rounded-lg transition-all duration-200 text-slate-600 hover:text-slate-900";
+                }
+            });
+            
+            // Instantly reset window view position smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-        const itineraryData = [
-            {
-                day: 1,
-                items: [
-                    { time: "12:10 PM", type: "single", primaryName: "The Harbour", logistics: "Ferry arrival terminal / Walk to center", title: "Arrival at The Harbour", desc: "Welcome to Penang! Check in to accommodations or transition safely towards central George Town.", cost: "Free Entry" },
-                    { time: "1:30 PM", type: "split", primaryName: "Siam Rd CKT", secondaryName: "Padang Brown CKT", logistics: "Bus 101 or short 10-min walk / High frequency options", title: "Char Kway Teow Split Action", desc: "Non-Halal group experiences legendary Siam Road Charcoal CKT. Halal group checks out beautiful alternative options at Padang Brown Food Court.", cost: "RM 8 - 12 per pax" },
-                    { time: "4:00 PM", type: "single", primaryName: "Armenian St & Ais Tingkap", logistics: "Walk 15 mins across heritage murals zone", title: "Armenian St Exploration / Ais Tingkap", desc: "Vibrant exploration of historical street murals. Stop for the iconic, refreshing street drink Ais Tingkap to beat afternoon tropical warmth.", cost: "Drinks: RM 3" },
-                    { time: "7:30 PM", type: "single", primaryName: "Kareem Pasembur", logistics: "Grab drop-off 10 mins", title: "Dinner: Kareem Pasembur", desc: "Indulge in a signature Indian Muslim plate filled with crispy fritters, potatoes, seafood, coated in smooth spicy-sweet warm peanut sauce.", cost: "RM 15 average" },
-                    { time: "9:00 PM", type: "single", primaryName: "ChinaHouse Live Music", logistics: "Walk 5 mins from central lane", title: "Nightlife: ChinaHouse Entertainment", desc: "Wind down inside Penang's longest converted art cafe space. Catch excellent late-night live music setups and check out their massive library of cakes.", cost: "Free Entry / Drinks vary" }
-                ]
-            },
-            {
-                day: 2,
-                items: [
-                    { time: "7:30 AM", type: "single", primaryName: "Lorong Kulit Market", logistics: "Bus 201 via core line", title: "Morning Run: Lorong Kulit Flea Market", desc: "Dive into local culture at an early morning marketplace highlighting antiques, vintage goods, street snacks, and quirky cultural items.", cost: "Free Entry" },
-                    { time: "9:00 AM", type: "split", primaryName: "Pulau Tikus Wan Tan Mee", secondaryName: "Apam Balik Island Stalls", logistics: "Walk 10 mins through neighborhood rows", title: "Breakfast Break: Pulau Tikus Options", desc: "Non-Halal travelers enjoy the famous bounce of classic Wan Tan Mee noodles. Halal companions grab iconic, sweet sweet crispy Apam Balik pancake varieties.", cost: "RM 7 - 12" },
-                    { time: "10:15 AM", type: "single", primaryName: "Church of the Assumption", logistics: "Grab transfer 15 mins", title: "Heritage Walk: Church of the Assumption", desc: "Tour the oldest Roman Catholic structural church layout in Penang, showcasing unique architecture dating back to initial structural timelines.", cost: "Free Access" },
-                    { time: "12:30 PM", type: "single", primaryName: "Hameed Pata Mee Sotong", logistics: "Walk 10 mins towards Padang Kota Lama", title: "Lunch: Hameed Pata Mee Sotong", desc: "Feast on intensely flavorful, bright red wok-fried squid noodles prepared at full speed within the vibrant Esplanade food court complex.", cost: "RM 8 per plate" },
-                    { time: "2:00 PM", type: "split", primaryName: "Teochew Chendul & Jin Kor CKT", secondaryName: "USM Campus Tour", logistics: "Bus 301 or Grab transit", title: "Midday Activity Split Layout", desc: "Cool off with famous wet shaved ice Teochew Chendul and local char kway teow or embark on a structured architectural look around USM.", cost: "RM 4 - 10" },
-                    { time: "5:00 PM", type: "single", primaryName: "Batu Ferringhi Coast", logistics: "Bus 101 line (approx 45 mins scenic drive)", title: "Sunset Shift: Batu Ferringhi Beach", desc: "Escape to the Northern coastline. Unwind on sandy shorelines, explore initial night market installations, and watch sunset color gradients.", cost: "Free Entry" },
-                    { time: "8:00 PM", type: "single", primaryName: "Gurney Drive Food Hub", logistics: "Bus 101 return loop / Grab shortcut", title: "Feast Terminal: Gurney Drive Hawker Center", desc: "A massive open-air culinary crossroads. Find almost every regional Penang dish compiled into one sprawling, well-illuminated food space.", cost: "RM 20+ average" }
-                ]
-            },
-            {
-                day: 3,
-                items: [
-                    { time: "9:00 AM", type: "single", primaryName: "Dim Sum Valet", logistics: "Walk or quick 5-min Grab ride", title: "Breakfast: Dim Sum Valet Experience", desc: "Enjoy fully halal, delicate, beautifully steamed and fried premium Dim Sum baskets served inside a comfortable, highly styled indoor venue.", cost: "RM 25 per pax" },
-                    { time: "10:30 AM", type: "single", primaryName: "Penang Hill Funicular", logistics: "Bus 204 directly to base platform", title: "Summit Ascent: Penang Hill Tram", desc: "Board the ultra-fast modern funicular train up the steep tracks to the top of Penang Hill for crisp highland air and sweeping island panoramas.", cost: "RM 30 (Return Train)" },
-                    { time: "1:30 PM", type: "single", primaryName: "Air Itam Laksa", logistics: "Walk / Bus 204 line down the road", title: "Lunch: Air Itam Asam Laksa", desc: "Taste the sharp, sweet, sour, thick fish broth poured over rice noodles, garnished heavily with fresh pineapple, cucumber, onion, and shrimp paste.", cost: "RM 6 per bowl" },
-                    { time: "3:30 PM", type: "single", primaryName: "Kek Lok Si Temple", logistics: "Walk 15 mins uphill crossing local markets", title: "Kek Lok Si Temple Exploration", desc: "Traverse Southeast Asia's sprawling flagship Buddhist temple complex. Inspect magnificent pagodas, thousands of carved statues, and serene layouts.", cost: "Free / Inclines RM 2" },
-                    { time: "7:00 PM", type: "single", primaryName: "Nasi Kandar Kampung Melayu", logistics: "Grab ride 20 mins from base station", title: "Dinner: Nasi Kandar Kampung Melayu", desc: "Savor a historic plate stacked high with rice and mixed curries, highlighting crisp spiced chicken, beef gravy, and okra combinations.", cost: "RM 15 average" },
-                    { time: "8:30 PM", type: "single", primaryName: "Macallum Night Market", logistics: "Grab transfer 15 mins towards city block", title: "Late Night: Macallum Street Bazaar", desc: "Explore a classic neighborhood night market setup rotating cheap clothing, gadget items, local street beverages, and unique desserts.", cost: "Varies" }
-                ]
-            },
-            {
-                day: 4,
-                items: [
-                    { time: "9:00 AM", type: "split", primaryName: "Toh Soon Cafe Toast", secondaryName: "Bee Hwa Cafe Kopitiam", logistics: "2-min walking radius between both spots", title: "Breakfast Split: Traditional Coffee Houses", desc: "Non-Halal takes toast/soft eggs over charcoal at Toh Soon alleyway. Halal groups visit Bee Hwa heritage kopitiam for stellar Muslim-friendly local noodles.", cost: "RM 10 approx" },
-                    { time: "11:00 AM", type: "single", primaryName: "Chowrasta Souvenirs", logistics: "Walk 10 mins down main arterial path", title: "Souvenir Gathering: Chowrasta Market", desc: "Stock up on Penang's premium goods. Find the original Jeruk Madu Pak Ali pickled fruits, nutmeg oils, and pastries inside this market.", cost: "Varies" },
-                    { time: "1:30 PM", type: "split", primaryName: "Goh Thew Chik Chicken Rice", secondaryName: "Restoran Kapitan Tandoori", logistics: "3-min walking transition space", title: "Lunch Split: Iconic Chicken Plates", desc: "Non-Halal targets silky smooth Hainanese chicken at Goh Thew Chik. Halal group targets Restoran Kapitan for famous rich Claypot Milani and Tandoori chicken.", cost: "RM 8 - 12" },
-                    { time: "3:30 PM", type: "single", primaryName: "Moh Teng Pheow Nyonya Koay", logistics: "Grab transit 5 mins inside alley maps", title: "Tea Time: Moh Teng Pheow Heritage", desc: "Learn and taste historical production methods of colorful, bite-sized sweet traditional Peranakan Nyonya Koay delicacies inside a vintage workshop.", cost: "RM 15 average" },
-                    { time: "5:00 PM", type: "single", primaryName: "Ferry / ETS Terminal", logistics: "Grab or walk directly to old ferry gate layout", title: "Departure Sequence: Transit to KL", desc: "Cross the strait over towards Butterworth terminal using smooth maritime lines to match up with the 6:45 PM ETS high-speed train run south to Kuala Lumpur.", cost: "Train Fare varies" }
-                ]
-            }
-        ];
-
-        const extrasData = {
-            "Non-Halal Food": [
-                { name: "888 Hokkien Mee", desc: "Rich prawn and pork bone soup stacked high with custom dynamic toppings." },
-                { name: "Pasar Lebuh Cecil", desc: "Sprawling local food hall featuring exceptional duck meat noodles and sweet rice cakes." },
-                { name: "Toh Soon Cafe", desc: "Famous narrow alleyway cafe delivering premium charcoal-toasted bread slices." },
-                { name: "Claypot Chicken Rice", desc: "Fragrant rice cooked under high flames with marinated chicken and savory sweet soy coatings." },
-                { name: "New Lane CKT", desc: "High heat stir-fried noodles containing plump cockles and crispy duck eggs." },
-                { name: "Sin Name Huat", desc: "Heritage roasted meat specialist showing perfectly crisp pork skins." },
-                { name: "Weng Kei", desc: "Succulent braised pork cuts and duck selections served over noodles." },
-                { name: "Pulau Tikus Wan Tan Mee", desc: "Elastic springy noodles coated in classic dark savory lard reductions." },
-                { name: "Banh Mi 77", desc: "Crispy crust Vietnamese baguette sliders stuffed with premium meats." },
-                { name: "Fu Er Dai", desc: "Spacious morning dim sum house providing top tier streaming baskets." },
-                { name: "Lao Jia CKT", desc: "Traditional charcoal-fired rice noodles carrying profound smoky flavor signatures." },
-                { name: "Duck Egg CKT @ Mei Le Hwa", desc: "Rich street vendor noodles elevated with rich, oily duck egg additions." },
-                { name: "Ah Leng CKT", desc: "Premium variations packed with massive prawns and mantis shrimp elements." },
-                { name: "Min Qin CKT", desc: "Hidden local alternative presenting consistent texture profile balances." },
-                { name: "Left Handed CKT", desc: "Skillfully handled traditional pan fried noodles boasting incredible wok heat profiles." },
-                { name: "Lorong Selamat CKT", desc: "Famously intense stir-fry noodles loaded up with jumbo seafood items." },
-                { name: "Goh Thew Chik", desc: "Arguably the most tender Hainanese style chicken plate in central Chulia street." }
+        // Itinerary Dataset Structure
+        const itineraryData = {
+            day1: [
+                {
+                    time: "12:10 PM",
+                    title: "Arrival & Ferry Crossing",
+                    desc: "Arrive via ferry terminal transit to modern island side. Enjoy scenic approach.",
+                    cost: "Ferry: RM 2 / pax",
+                    isSplit: false
+                },
+                {
+                    time: "1:30 PM",
+                    title: "Lunch Selection",
+                    isSplit: true,
+                    options: [
+                        {
+                            type: "Non-Halal Option",
+                            name: "Siam Road Charcoal Char Kuey Teow",
+                            desc: "Legendary wok-hei charred noodle masterfully cooked over charcoal plates.",
+                            cost: "RM 8 / pax",
+                            imgSrc: "images/day1_siam_road.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Siam+Road+Charcoal+Char+Kuey+Teow+Penang"
+                        },
+                        {
+                            type: "Halal Alternative",
+                            name: "Medan Selera Padang Brown",
+                            desc: "Dedicated historic halal food court block crafting wet-style Char Kuey Teow Basah with fresh massive prawns, plus signature rich Sup Tulang bone broths.",
+                            cost: "RM 8 / pax",
+                            imgSrc: "images/day1_padang_brown.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Medan+Selera+Padang+Brown+Penang"
+                        }
+                    ]
+                },
+                {
+                    time: "4:00 PM",
+                    title: "Sightseeing & Tea Time",
+                    desc: "Explore stunning clan house heritage and refreshing historical drinks.",
+                    isSplit: false,
+                    carousel: [
+                        {
+                            name: "Cheah Kongsi Clan House",
+                            desc: "Stunning historical Hokkien architecture details at Armenian Street zone.",
+                            cost: "Entry: ~RM 10 / pax",
+                            imgSrc: "images/day1_cheah_kongsi.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Cheah+Kongsi+Penang"
+                        },
+                        {
+                            name: "Ais Tingkap Penang",
+                            desc: "Refreshing iced local heritage drinks paired with crisp savory snacks.",
+                            cost: "Snacks: RM 5 / pax",
+                            imgSrc: "images/day1_ais_tingkap.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Ais+Tingkap+Penang"
+                        }
+                    ]
+                },
+                {
+                    time: "7:30 PM",
+                    title: "Dinner: Kareem Pasembur Rojak",
+                    desc: "Dig into a budget-friendly Halal feast featuring assorted fritters blanketed under rich sweet peanut gravy.",
+                    cost: "Food: RM 15 / pax",
+                    imgSrc: "images/day1_kareem_pasembur.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Kareem+Pasembur+Rojak+Penang",
+                    isSplit: false
+                },
+                {
+                    time: "9:00 PM",
+                    title: "Live Music: The Canteen at ChinaHouse",
+                    desc: "Wrap up the opening night enjoying high-energy live music acts in this famous, uniquely extended historic art gallery and lifestyle hub.",
+                    cost: "Drinks: RM 15-20 / pax",
+                    imgSrc: "images/day1_chinahouse.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Canteen+at+ChinaHouse+Penang",
+                    isSplit: false
+                }
             ],
-            "Halal Food": [
-                { name: "Nasi Kandar Rafei Ali", desc: "Authentic, heavily spiced Indian Muslim rich curry rice destination." },
-                { name: "Teochew Chendul", desc: "Creamy shaved ice dessert containing fresh coconut milk and pandan jelly strips." },
-                { name: "Dim Sum Valet", desc: "Superb Muslim-friendly Halal dim sum breakfast varieties." },
-                { name: "Ais Tingkap", desc: "Iconic rose-syrup herbal street drink layered with young coconut flesh." },
-                { name: "Hameediyah", desc: "The absolute oldest surviving Nasi Kandar establishment lineage in the nation." },
-                { name: "Nasi Dalca/Briyani", desc: "Fragrant spiced rice arrays complemented by rich lentil gravies." },
-                { name: "Amy Oyster Omelette", desc: "Perfectly crisped, gooey egg and sweet oyster starch combinations." },
-                { name: "Padang Kota Lama", desc: "Vibrant seafront food complex housing excellent regional specialities." },
-                { name: "Nasi Kandar Ali", desc: "Intense, dark curry variations preferred by late night street food hunters." },
-                { name: "Nasi Kandar IPD", desc: "Highly popular police headquarters neighborhood counter pushing flavorful gravies." },
-                { name: "Hameed Pata Mee Sotong", desc: "Unmatched fried noodles slicked in sharp sweet squid paste blends." },
-                { name: "Makan Pagi", desc: "Quaint early morning stall serving clean traditional breakfast items." },
-                { name: "Kareem Pasembur", desc: "Incredible sweet-spicy peanut glaze drizzled over custom crunchy additions." },
-                { name: "Apam Balik Pulau Tikus", desc: "Buttery, sweet turnovers containing sweet corn and crushed peanut elements." },
-                { name: "Nasi Kandar Deen Mutiara", desc: "Sensational curry textures drawing immense crowds night after night." },
-                { name: "Samosa (Queen St)", desc: "Freshly deep-fried savory triangular snacks packed with spiced potatoes." },
-                { name: "The Garden Banana Leaf", desc: "Generous traditional South Indian rice platters accompanied by diverse side arrays." },
-                { name: "Penang Road Famous Laksa", desc: "Tangy, intensely dynamic fish broth noodles available near primary junctions." },
-                { name: "Tokyo Milk Cheese", desc: "Premium sweet treats matching high grade dairy products." },
-                { name: "Tung Sui Po", desc: "Calming Chinese style herbal dessert broths tailored for afternoon relaxation." },
-                { name: "Moh Teng Pheow", desc: "Exquisite handmade sweet Peranakan bite-sized multi-colored pastries." }
+            day2: [
+                {
+                    time: "7:30 AM",
+                    title: "Pasar Karat (Lorong Kulit)",
+                    desc: " hunt for antique collections, curious vintage relics, items and used books.",
+                    cost: "Bus: RM 1.40 / pax",
+                    imgSrc: "images/day2_lorong_kulit.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Lorong+Kulit+Flea+Market+Penang",
+                    isSplit: false
+                },
+                {
+                    time: "9:00 AM",
+                    title: "Breakfast Selection",
+                    isSplit: true,
+                    options: [
+                        {
+                            type: "Non-Halal Option",
+                            name: "Wan Tan Mee House",
+                            desc: "Famous for springy, delicious legacy noodles tossed carefully in savory dark oil blend.",
+                            cost: "RM 7 / pax",
+                            imgSrc: "images/day2_wan_tan_mee.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Wan+Tan+Mee+House+Pulau+Tikus+Penang"
+                        },
+                        {
+                            type: "Halal Alternative",
+                            name: "Apam Balik Pulau Tikus / Rafei Ali",
+                            desc: "Crispy sweet folded local pancakes or rich morning selections right at next stall.",
+                            cost: "RM 7 / pax",
+                            imgSrc: "images/day2_apam_balik_pulau_tikus.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Apam+Balik+Pulau+Tikus+Penang"
+                        }
+                    ]
+                },
+                {
+                    time: "10:15 AM",
+                    title: "Church of the Assumption",
+                    desc: "Attend beautiful Sunday service at a grand historic church and explore Penang Diocesan Museum properties.",
+                    cost: "Donation: ~RM 5 / pax",
+                    imgSrc: "images/day2_assumption_church.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Church+of+the+Assumption+Penang",
+                    isSplit: false
+                },
+                {
+                    time: "12:30 PM",
+                    title: "Lunch: Hameed Pata Mee Sotong",
+                    desc: "Head over to Esplanade Food Court for iconic fiery wok-fried squid noodles beside the sea views.",
+                    cost: "Food: RM 8 / pax",
+                    imgSrc: "images/day2_hameed_pata.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Hameed+Pata+Mee+Sotong+Penang",
+                    isSplit: false
+                },
+                {
+                    time: "2:00 PM",
+                    title: "Dessert & USM Tour Split",
+                    isSplit: false,
+                    carousel: [
+                        {
+                            name: "Teochew Chendul & Jin Kor CKT",
+                            desc: "Classic refreshing shaved coconut milk ice. Non-halal side can add Michelin-selected Jin Kor Char Kuey Teow cooked with duck egg.",
+                            cost: "Chendul: RM 4 | CKT: RM 8",
+                            imgSrc: "images/day2_teochew_chendul.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Penang+Road+Famous+Teochew+Chendul"
+                        },
+                        {
+                            name: "Universiti Sains Malaysia (USM)",
+                            desc: "Take an afternoon stroll along peaceful scenic lakes Tasik Aman & Tasik Harapan plus entry into Tuanku Fauziah Museum.",
+                            cost: "Bus: RM 2 / pax",
+                            imgSrc: "images/day2_usm.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Universiti+Sains+Malaysia+Penang"
+                        }
+                    ]
+                },
+                {
+                    time: "5:00 PM",
+                    title: "Bicycle by the Beach",
+                    desc: "Ride along the coastal strip of Batu Ferringhi sand tracks for striking tropical sunset frames.",
+                    cost: "Rental: ~RM 15 / pax",
+                    imgSrc: "images/day2_batu_ferringhi.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Batu+Ferringhi+Beach+Penang",
+                    isSplit: false
+                },
+                {
+                    time: "8:00 PM",
+                    title: "Dinner: Gurney Drive Hawker Centre",
+                    desc: "Vibrant seafront open complex with split halal and non-halal lifestyle eating zones.",
+                    cost: "Food: RM 15 / pax",
+                    imgSrc: "images/day2_gurney_drive.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Gurney+Drive+Hawker+Centre+Penang",
+                    isSplit: false
+                }
             ],
-            "Mixed Courts": [
-                { name: "Gurney Drive Hawker Centre", desc: "Sprawling beachfront culinary compound holding diverse halal and non-halal counters side-by-side." }
+            day3: [
+                {
+                    time: "9:00 AM",
+                    title: "Breakfast: Dim Sum Valet",
+                    desc: "Elegant and delicious fully Halal morning teahouse spread.",
+                    cost: "Food: RM 20 / pax",
+                    imgSrc: "images/day3_dim_sum_valet.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Dim+Sum+Valet+Penang",
+                    isSplit: false
+                },
+                {
+                    time: "10:30 AM",
+                    title: "Penang Hill Funicular",
+                    desc: "Ride the funicular railway car straight up high altitude peaks for breezy panoramic overview points.",
+                    cost: "Ticket: RM 15 (MyKad)",
+                    imgSrc: "images/day3_penang_hill.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Penang+Hill+Funicular+Station",
+                    isSplit: false
+                },
+                {
+                    time: "1:30 PM",
+                    title: "Lunch: Penang Air Itam Laksa",
+                    desc: "Descend the station to relish deep, thick savory fish broths packed with tangy noodles.",
+                    cost: "Food: RM 10 / pax",
+                    imgSrc: "images/day3_air_itam_laksa.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Penang+Air+Itam+Laksa",
+                    isSplit: false
+                },
+                {
+                    time: "3:30 PM",
+                    title: "Kek Lok Si Temple Exploration",
+                    desc: "Magnificent Buddhist monastery compound trail. Pick up local street apam balik sweets around lower paths.",
+                    cost: "Free Entrance | Snacks: RM 5",
+                    imgSrc: "images/day3_kek_lok_si.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Kek+Lok+Si+Temple+Penang",
+                    isSplit: false
+                },
+                {
+                    time: "7:00 PM",
+                    title: "Dinner: Nasi Kandar Kampung Melayu",
+                    desc: "Generous rich rice combinations crowned beautifully with legendary sweet coconut sambal layers.",
+                    cost: "Food: RM 15 / pax",
+                    imgSrc: "images/day3_kampung_melayu.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Nasi+Kandar+Kampung+Melayu+Penang",
+                    isSplit: false
+                },
+                {
+                    time: "8:30 PM",
+                    title: "Macallum Street Night Market",
+                    desc: "Vibrant Monday-exclusive night market streets. Excellent for street bites and snacks.",
+                    cost: "Snacks: RM 10 / pax",
+                    imgSrc: "images/day3_macallum_market.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Macallum+Street+Night+Market+Penang",
+                    isSplit: false
+                }
             ],
-            "Points of Interest": [
-                { name: "Penang Hill", desc: "Panoramic high-elevation lookouts reached via super fast funicular systems." },
-                { name: "Buddhist Association", desc: "Serene interior structural designs offering profound historical introspection spaces." },
-                { name: "Peranakan Mansion", desc: "Opulent green-hued physical museum showcasing rich antique lifestyles of early tycoons." },
-                { name: "Chaiya Mangalaram", desc: "Ornate Thai Buddhist temple format housing a magnificent reclining Buddha sculpture." },
-                { name: "Armenian St", desc: "The bustling epicentre of traditional George Town historical shop house architecture." },
-                { name: "Chew Jetty", desc: "Stilt-house wooden village communities extending dramatically over coastal sea waters." },
-                { name: "Street Art", desc: "Famous whimsical wall paintings seamlessly integrating real structural props." },
-                { name: "Beach St", desc: "Historical financial strip showcasing monumental European architectural facades." },
-                { name: "Esplanade", desc: "Lush seaside lawn path bordering historic fort structures and ocean viewing walls." },
-                { name: "Night Cycling", desc: "Exhilarating illuminated bicycle tours navigating cool evening city grids." },
-                { name: "Areca Bookstore", desc: "Curated literary outlet celebrating regional history, art, and architectural publications." },
-                { name: "P66 Stationery", desc: "Sleek modern minimalist lifestyle boutique stocking high-grade functional accessories." },
-                { name: "Teow Chew Opera", desc: "Preserved cultural display house celebrating classical theatrical heritage forms." },
-                { name: "Tropical Spice Garden", desc: "Immersive nature preserve path showcasing vast selections of fragrant tropical plants." },
-                { name: "Cat Beach", desc: "Heartwarming coastal sanctuary space caring for hundreds of happy rescue felines." },
-                { name: "By Cent Dollar", desc: "Quaint artisan gift shop highlighting locally conceptualized items." },
-                { name: "Jeruk Pak Ali", desc: "The undisputed premier processing house for sweet pickled fruit snacks." },
-                { name: "Lorong Kulit", desc: "Spontaneous daily swap meet highlighting interesting vintage bric-a-brac." },
-                { name: "Hin Bus Depot", desc: "Transformed industrial bus station running artistic installations and Sunday artisan markets." },
-                { name: "Suka Ngirup", desc: "Relaxed neighborhood hydration point reflecting authentic community roots." },
-                { name: "The Habitat", desc: "State-of-the-art rainforest canopy walkway suspended over pristine jungle ecosystems." },
-                { name: "Kek Lok Si", desc: "Colossal multi-tier architectural marvel watching over surrounding valleys." },
-                { name: "War Museum", desc: "Historical underground fortress layouts outlining wartime tactical defense lines." },
-                { name: "Macallum Night Market", desc: "Sprawling grid assembly of local market trailers selling food and lifestyle goods." },
-                { name: "Entopia", desc: "Massive indoor eco-dome containing thousands of free-flying live butterflies." },
-                { name: "Bulu Bulu Cafe", desc: "Welcoming boutique concept highlighting local design features." },
-                { name: "Loka Made", desc: "Creative studio storefront producing gorgeous stylized illustrations of Malaysian life." }
-            ],
-            "Nightlife": [
-                { name: "Canteen at ChinaHouse", desc: "Energetic acoustic music environment with exceptional dessert varieties." },
-                { name: "Backdoor Bodega", desc: "Ultra-cool hidden speakeasy serving highly creative artisanal cocktail concepts." }
+            day4: [
+                {
+                    time: "9:00 AM",
+                    title: "Breakfast Split",
+                    isSplit: true,
+                    options: [
+                        {
+                            type: "Non-Halal Option",
+                            name: "Toh Soon Cafe",
+                            desc: "Classic old-alley traditional charcoal toasted bread slabs paired with aromatic soft boiled eggs and butter coffee brews.",
+                            cost: "RM 6 / pax",
+                            imgSrc: "images/day4_toh_soon.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Toh+Soon+Cafe+Penang"
+                        },
+                        {
+                            type: "Halal Alternative",
+                            name: "Bee Hwa Cafe",
+                            desc: "Just a 2-minute walk away. Heritage kopitiam cooking fantastic Muslim-friendly Char Kuey Teow and Hainanese toast spreads.",
+                            cost: "RM 6 / pax",
+                            imgSrc: "images/day4_bee_hwa.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Bee+Hwa+Cafe+Penang"
+                        }
+                    ]
+                },
+                {
+                    time: "11:00 AM",
+                    title: "Souvenir Run: Jeruk Madu Pak Ali",
+                    desc: "Gather famous sweetened pickled local fruits and traditional preserves at Penang Road main outpost.",
+                    cost: "Price varies by item",
+                    imgSrc: "images/day4_pak_ali.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Jeruk+Madu+Pak+Ali+Penang+Road",
+                    isSplit: false
+                },
+                {
+                    time: "1:30 PM",
+                    title: "Lunch Selection",
+                    isSplit: true,
+                    options: [
+                        {
+                            type: "Non-Halal Option",
+                            name: "Goh Thew Chik Hainan Chicken Rice",
+                            desc: "Renowned for silky smooth roasted and tender steamed chicken cuts over intensely fragrant oiled rice bowls.",
+                            cost: "RM 8 / pax",
+                            imgSrc: "images/day4_goh_thew_chik.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Goh+Thew+Chik+Hainan+Chicken+Rice+Penang"
+                        },
+                        {
+                            type: "Halal Alternative",
+                            name: "Restoran Kapitan",
+                            desc: "Located down Lebuh Chulia. Famous for claypot spiced Milani Rice portions and exceptionally juicy sizzling claypot Tandoori Chicken.",
+                            cost: "RM 12 / pax",
+                            imgSrc: "images/day4_kapitan.jpg",
+                            mapUrl: "https://www.google.com/maps/search/?api=1&query=Restoran+Kapitan+Lebuh+Chulia+Penang"
+                        }
+                    ]
+                },
+                {
+                    time: "3:30 PM",
+                    title: "Moh Teng Pheow Nyonya Koay",
+                    desc: "Indulge in vibrant, authentic and beautiful local traditional Peranakan sweet cakes.",
+                    cost: "Snacks: RM 10 / pax",
+                    imgSrc: "images/day4_nyonya_koay.jpg",
+                    mapUrl: "https://www.google.com/maps/search/?api=1&query=Moh+Teng+Pheow+Nyonya+Koay+Penang",
+                    isSplit: false
+                },
+                {
+                    time: "5:00 PM",
+                    title: "Transit to Terminal & Return",
+                    desc: "Catch ferry crossing to mainland Butterworth terminal by 5:45 PM. Direct boarding onto 6:45 PM ETS Train ride returning home to KL safely.",
+                    cost: "Ferry: RM 2 / pax",
+                    isSplit: false
+                }
             ]
         };
 
-        // Render Carousel Engine
-        function renderItineraries() {
-            itineraryData.forEach((dayData, dIndex) => {
-                const container = document.getElementById(`carousel-${dIndex}`);
-                let cardsHTML = '';
+        // DOM Rendering Helper Engine
+        function generateTimeline(dayKey, targetId) {
+            const container = document.getElementById(targetId);
+            let htmlContent = "";
 
-                dayData.items.forEach((item, cIndex) => {
-                    const cleanKeyword1 = item.primaryName.replace(/[^a-zA-Z0-9 ]/g, "");
-                    const mapUrl = "https://www.google.com/maps/search/?api=1&query=[Location+Name]";
-                    
-                    let visualsGridHTML = '';
+            itineraryData[dayKey].forEach((item) => {
+                htmlContent += `
+                    <div class="relative pl-6 pb-2">
+                        <div class="absolute -left-[9px] top-1.5 bg-indigo-600 border-4 border-white w-4 h-4 rounded-full shadow-xs"></div>
+                        
+                        <span class="text-xs font-black tracking-wider text-indigo-600 block uppercase mb-1">${item.time}</span>
+                        <h3 class="text-base font-extrabold text-slate-900 leading-tight mb-2">${item.title}</h3>
+                `;
 
-                    if (item.type === 'single') {
-                        visualsGridHTML = `
-                            <div class="flex h-28 border-b border-slate-100">
-                                <div class="w-1/2 overflow-hidden bg-slate-200">
-                                    <img src="https://placehold.co/400x300/e2e8f0/1e293b?text=${encodeURIComponent(cleanKeyword1)}" class="w-full h-full object-cover" alt="${item.primaryName}">
-                                </div>
-                                <a href="${mapUrl}" target="_blank" class="w-1/2 bg-slate-50 flex flex-col items-center justify-center text-slate-500 hover:bg-slate-100 active:bg-slate-200 transition-all gap-1">
-                                    <i data-lucide="map-pin" class="w-5 h-5 text-slate-600"></i>
-                                    <span class="text-[11px] font-bold tracking-wider uppercase">View Map</span>
-                                </a>
-                            </div>
-                        `;
-                    } else {
-                        const cleanKeyword2 = item.secondaryName.replace(/[^a-zA-Z0-9 ]/g, "");
-                        visualsGridHTML = `
-                            <div class="flex h-24 border-b border-slate-100">
-                                <div class="w-1/2 overflow-hidden bg-slate-200">
-                                    <img src="https://placehold.co/400x300/e2e8f0/1e293b?text=${encodeURIComponent(cleanKeyword1)}" class="w-full h-full object-cover" alt="${item.primaryName}">
-                                </div>
-                                <a href="${mapUrl}" target="_blank" class="w-1/2 bg-amber-50/50 flex flex-col items-center justify-center text-amber-700 hover:bg-amber-100/60 active:bg-amber-200/50 transition-all gap-1">
-                                    <i data-lucide="utensils" class="w-4 h-4 text-amber-600"></i>
-                                    <span class="text-[10px] font-bold tracking-wider uppercase">Primary Map</span>
-                                </a>
-                            </div>
-                            <div class="flex h-24 border-b border-slate-100">
-                                <div class="w-1/2 overflow-hidden bg-slate-200">
-                                    <img src="https://placehold.co/400x300/e2e8f0/1e293b?text=${encodeURIComponent(cleanKeyword2)}" class="w-full h-full object-cover" alt="${item.secondaryName}">
-                                </div>
-                                <a href="${mapUrl}" target="_blank" class="w-1/2 bg-emerald-50/60 flex flex-col items-center justify-center text-emerald-700 hover:bg-emerald-100 active:bg-emerald-200/50 transition-all gap-1">
-                                    <i data-lucide="moon" class="w-4 h-4 text-emerald-600"></i>
-                                    <span class="text-[10px] font-bold tracking-wider uppercase text-center font-bold">Halal Alternative</span>
-                                </a>
-                            </div>
-                        `;
-                    }
-
-                    cardsHTML += `
-                        <div class="w-full flex-shrink-0 snap-center px-6 flex flex-col justify-center h-full">
-                            <div class="bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-slate-100 overflow-hidden flex flex-col">
+                if (item.isSplit) {
+                    htmlContent += `<div class="grid grid-cols-1 gap-3 mt-2">`;
+                    item.options.forEach((opt) => {
+                        htmlContent += `
+                            <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-xs">
+                                <span class="inline-block text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-md mb-2 ${opt.type.includes('Non-Halal') ? 'bg-rose-50 text-rose-700 border border-rose-100' : 'bg-emerald-50 text-emerald-700 border border-emerald-100'}">${opt.type}</span>
+                                <h4 class="text-sm font-bold text-slate-900">${opt.name}</h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">${opt.desc}</p>
                                 
-                                <div class="bg-slate-800 px-4 py-3 flex items-center justify-between text-white flex-shrink-0">
-                                    <button onclick="moveCarousel(${dIndex}, -1)" class="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center active:scale-90 transition-transform"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                                    <span class="text-xs font-800 tracking-widest text-slate-300 uppercase">${item.time}</span>
-                                    <button onclick="moveCarousel(${dIndex}, 1)" class="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center active:scale-90 transition-transform"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                                <div class="relative w-full h-32 rounded-lg bg-slate-100 overflow-hidden mt-3">
+                                    <img src="${opt.imgSrc}" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=${encodeURIComponent(opt.name)}';" class="w-full h-full object-cover" alt="${opt.name}">
                                 </div>
-
-                                <div class="flex flex-col bg-white">
-                                    ${visualsGridHTML}
+                                
+                                <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-50">
+                                    <span class="text-xs font-bold text-slate-700"><i class="fa-solid fa-wallet mr-1 text-slate-400"></i>${opt.cost}</span>
+                                    <a href="${opt.mapUrl}" onclick="window.open(this.href, '_blank'); return false;" class="inline-flex items-center text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1.5 rounded-lg hover:bg-indigo-100 transition-colors pointer-events-auto relative z-20">
+                                        <i class="fa-solid fa-map-location-dot mr-1"></i>Map
+                                    </a>
                                 </div>
-
-                                <div class="bg-slate-50 border-b border-slate-100 px-4 py-2.5 flex items-start gap-2.5">
-                                    <div class="mt-0.5 p-1 bg-blue-50 text-blue-600 rounded-md">
-                                        <i data-lucide="navigation" class="w-3.5 h-3.5 transform rotate-45 stroke-[2.5]"></i>
-                                    </div>
-                                    <p class="text-[11px] font-semibold text-slate-600 leading-relaxed">${item.logistics}</p>
-                                </div>
-
-                                <div class="p-5 flex-1 flex flex-col justify-between bg-white min-h-[160px]">
-                                    <div>
-                                        <h3 class="text-lg font-bold text-slate-800 leading-snug mb-1">${item.title}</h3>
-                                        <p class="text-xs text-slate-500 leading-relaxed font-medium">${item.desc}</p>
-                                    </div>
-                                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Est. Budget</span>
-                                        <span class="text-xs font-800 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">${item.cost}</span>
-                                    </div>
-                                </div>
-
                             </div>
-                        </div>
+                        `;
+                    });
+                    htmlContent += `</div>`;
+
+                } else if (item.carousel) {
+                    htmlContent += `
+                        <p class="text-xs text-slate-500 mb-3 leading-relaxed">${item.desc}</p>
+                        <div class="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-2">
                     `;
-                });
-
-                container.innerHTML = cardsHTML;
-            });
-        }
-
-        // Render Extras Engine
-        function renderExtras() {
-            const container = document.getElementById('extras-list-container');
-            let completeHTML = '';
-
-            for (const [category, places] of Object.entries(extrasData)) {
-                places.forEach(place => {
-                    let badgeColor = "bg-slate-100 text-slate-700";
-                    let iconNode = "bookmark";
-                    if(category === "Non-Halal Food") { badgeColor = "bg-amber-50 text-amber-800 border-amber-100"; iconNode = "utensils"; }
-                    if(category === "Halal Food") { badgeColor = "bg-emerald-50 text-emerald-800 border-emerald-100"; iconNode = "moon"; }
-                    if(category === "Mixed Courts") { badgeColor = "bg-purple-50 text-purple-800 border-purple-100"; iconNode = "layers"; }
-                    if(category === "Points of Interest") { badgeColor = "bg-blue-50 text-blue-800 border-blue-100"; iconNode = "map-pin"; }
-                    if(category === "Nightlife") { badgeColor = "bg-pink-50 text-pink-800 border-pink-100"; iconNode = "glass-water"; }
-
-                    completeHTML += `
-                        <div class="extra-item bg-white p-4 rounded-xl border border-slate-100 shadow-sm flex items-start justify-between gap-4 transition-all duration-200 hover:translate-x-1" data-category="${category}">
-                            <div class="flex-1">
-                                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                                    <h4 class="font-bold text-slate-800 text-sm leading-tight">${place.name}</h4>
-                                    <span class="text-[9px] font-bold px-2 py-0.5 rounded-full border ${badgeColor}">${category}</span>
+                    item.carousel.forEach((cItem) => {
+                        htmlContent += `
+                            <div class="bg-white border border-slate-100 rounded-xl p-3 shadow-xs min-w-[260px] max-w-[260px] snap-start flex-shrink-0">
+                                <h4 class="text-sm font-bold text-slate-900 truncate">${cItem.name}</h4>
+                                <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">${cItem.desc}</p>
+                                
+                                <div class="relative w-full h-28 rounded-lg bg-slate-100 overflow-hidden mt-2">
+                                    <img src="${cItem.imgSrc}" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=${encodeURIComponent(cItem.name)}';" class="w-full h-full object-cover" alt="${cItem.name}">
                                 </div>
-                                <p class="text-xs text-slate-500 font-medium leading-relaxed">${place.desc}</p>
+                                
+                                <div class="flex items-center justify-between mt-3">
+                                    <span class="text-xs font-bold text-slate-700">${cItem.cost}</span>
+                                    <a href="${cItem.mapUrl}" onclick="window.open(this.href, '_blank'); return false;" class="inline-flex items-center text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1.5 rounded-lg hover:bg-indigo-100 transition-colors pointer-events-auto relative z-20">
+                                        <i class="fa-solid fa-map-location-dot mr-1"></i>Map
+                                    </a>
+                                </div>
                             </div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=[Location+Name]" target="_blank" class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors flex-shrink-0">
-                                <i data-lucide="${iconNode}" class="w-4 h-4"></i>
+                        `;
+                    });
+                    htmlContent += `</div>`;
+
+                } else {
+                    htmlContent += `
+                        <p class="text-xs text-slate-500 leading-relaxed">${item.desc}</p>
+                        ${item.imgSrc ? `
+                        <div class="relative w-full h-40 rounded-xl bg-slate-100 overflow-hidden mt-3">
+                            <img src="${item.imgSrc}" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=${encodeURIComponent(item.title)}';" class="w-full h-full object-cover" alt="${item.title}">
+                        </div>
+                        ` : ''}
+                        
+                        <div class="flex items-center justify-between mt-3">
+                            ${item.cost ? `<span class="text-xs font-bold text-slate-700"><i class="fa-solid fa-wallet mr-1 text-slate-400"></i>${item.cost}</span>` : '<span></span>'}
+                            ${item.mapUrl ? `
+                            <a href="${item.mapUrl}" onclick="window.open(this.href, '_blank'); return false;" class="inline-flex items-center text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1.5 rounded-lg hover:bg-indigo-100 transition-colors pointer-events-auto relative z-20">
+                                <i class="fa-solid fa-map-location-dot mr-1"></i>Map
                             </a>
+                            ` : ''}
                         </div>
                     `;
-                });
-            }
-            container.innerHTML = completeHTML;
+                }
+
+                htmlContent += `</div>`;
+            });
+
+            container.innerHTML = htmlContent;
         }
 
-        // Global Navigation Logic Engine
-        function switchTab(tabIndex) {
-            appState.activeTab = tabIndex;
-            
-            // Update Headers Text
-            document.getElementById('view-title').innerText = viewTitles[tabIndex];
-
-            // Tab Buttons UI Styling Update
-            const buttons = document.querySelectorAll('.nav-tab-btn');
-            buttons.forEach((btn, index) => {
-                if (index === tabIndex) {
-                    btn.classList.remove('text-slate-400', 'font-medium');
-                    btn.classList.add('text-emerald-600', 'font-bold');
-                    btn.querySelector('i').setAttribute('stroke-width', '2.5');
-                } else {
-                    btn.classList.remove('text-emerald-600', 'font-bold');
-                    btn.classList.add('text-slate-400', 'font-medium');
-                    btn.querySelector('i').setAttribute('stroke-width', '2');
-                }
-            });
-
-            // Display Panes Layer Management
-            const panes = document.querySelectorAll('.tab-pane');
-            panes.forEach((pane, index) => {
-                if (index === tabIndex) {
-                    pane.classList.remove('opacity-0', 'pointer-events-none', 'z-0');
-                    pane.classList.add('opacity-100', 'z-10');
-                } else {
-                    pane.classList.remove('opacity-100', 'z-10');
-                    pane.classList.add('opacity-0', 'pointer-events-none', 'z-0');
-                }
-            });
-            
-            // Recalculate icon renderings
-            lucide.createIcons();
-        }
-
-        // Carousel Arrow Navigation Controls
-        function moveCarousel(dayIndex, direction) {
-            const container = document.getElementById(`carousel-${dayIndex}`);
-            const totalElements = itineraryData[dayIndex].items.length;
-            
-            let targetIndex = appState.carouselIndices[dayIndex] + direction;
-            if (targetIndex < 0) targetIndex = 0;
-            if (targetIndex >= totalElements) targetIndex = totalElements - 1;
-
-            appState.carouselIndices[dayIndex] = targetIndex;
-            
-            const itemWidth = container.querySelector('.w-full').clientWidth;
-            container.scrollTo({
-                left: itemWidth * targetIndex,
-                behavior: 'smooth'
-            });
-        }
-
-        // Extras Live Filter Pills Logic
-        function filterExtras(category) {
-            // Update Filter Badges Highlight Styling
-            const filterButtons = document.querySelectorAll('.extra-filter-btn');
-            filterButtons.forEach(btn => {
-                if(btn.innerText.includes(category) || (category === 'all' && btn.innerText === 'All')) {
-                    btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
-                    btn.classList.add('bg-emerald-600', 'text-white');
-                } else {
-                    btn.classList.remove('bg-emerald-600', 'text-white');
-                    btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
-                }
-            });
-
-            // Toggle item block rendering
-            const items = document.querySelectorAll('.extra-item');
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // App Initialization Orchestrator
-        window.addEventListener('DOMContentLoaded', () => {
-            renderItineraries();
-            renderExtras();
-            switchTab(0);
-            
-            // Global custom listener to handle scroll snap state sync safely
-            itineraryData.forEach((_, dIndex) => {
-                const scrollContainer = document.getElementById(`carousel-${dIndex}`);
-                scrollContainer.addEventListener('scroll', () => {
-                    const width = scrollContainer.clientWidth;
-                    if (width > 0) {
-                        const calculatedIndex = Math.round(scrollContainer.scrollLeft / width);
-                        appState.carouselIndices[dIndex] = calculatedIndex;
-                    }
-                });
-            });
+        // Initialize All Days On Document Load
+        document.addEventListener("DOMContentLoaded", () => {
+            generateTimeline("day1", "timeline-day-1");
+            generateTimeline("day2", "timeline-day-2");
+            generateTimeline("day3", "timeline-day-3");
+            generateTimeline("day4", "timeline-day-4");
         });
     </script>
 </body>
